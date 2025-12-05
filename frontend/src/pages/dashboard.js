@@ -31,7 +31,35 @@ export default function Dashboard() {
 
       <div style={{ padding: "20px" }}>
         <h1>Dashboard Page</h1>
-        <p>content</p>
+        <p>This is the main content for my Final Project for ITIS 5166</p>
+
+        <h2>Recent Innovations in Healthcare</h2>
+        <div>
+
+        </div>
+        <p>
+          Some of the top innovations occurring in healthcare within the last 6 months
+           include a multitude of new technology usage into the healthcare system, including
+            AI powered diagnostics, medical wearables, robotics for minimally invasive 
+            surgeries, and AR based medical training. AI is beginning to be used in a variety
+            of new regions in healthcare, including aforementioned diagnostics and drug
+            discovery. AI can be used to improve the accuracy of clinical trials, which can 
+            help develop new medications more efficiently. It is also being used in the
+            diagnosing process through machine learning, where computers can help to detect
+            illnesses more accurately and earlier overall improving patient outcomes. 
+            Robotics are being used in surgeries to enhance control and precision for 
+            surgeons, overall making surgeries less invasive and decreasing surgical risks.
+            Outside of the technological realm, the healthcare industry is also making leaps 
+            and bounds towards vaccine development and mRNA development. mRNA is currently
+            being developed for more personalized cancer treatments as well as flu, COVID, 
+            and other vaccines. On a more ethically concerning note, the genetics field of 
+            healthcare is working towards developing a cure for genetically inherited diseases 
+            through gene editing. This could be a cause for concern in the future for risk of 
+            these innovations not being used for their intended purpose, as well as the potential
+             for other unintended genetic changes during use. 
+        </p>
+        <br></br>
+        <h3> <a href="https://www.idaireland.com/latest-news/insights/top-medical-innovations-transforming-healthcare-in-2025" target="_blank">Website</a></h3>
       </div>
     </div>
   );

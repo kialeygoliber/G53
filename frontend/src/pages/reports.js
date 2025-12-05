@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import BarChart from "../components/BarChart";
+import axios from "axios";
 
 export default function Reports() {
   const handleLogout = () => {
@@ -30,7 +32,11 @@ export default function Reports() {
   
         <div style={{ padding: "20px" }}>
         <h1>Reports Page</h1>
-        <p>content</p>
+        <div style={{ padding: "20px" }}>
+              <BarChart height={500} width={600} />
+              <p>This bar chart shows the proportion of healthcare innovations introduced in the last 6 months. Data source: simulated.</p>
+            </div>
+        
       </div>
     </div>
   );
