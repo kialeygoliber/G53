@@ -1,21 +1,34 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (username && password) {
-      localStorage.setItem("token", "temporary-token-for-testing-lollll");
-      navigate("/");
-    } else {
+    if (!username || !password) {
       alert("Please enter username and password");
+      return;
+    }
+
+    try {
+      const response = await axios.post("http://localhost:3000/users/login", {
+        username,
+        password
+      });
+
+      const token = response.data.access_token;
+      localStorage.setItem("token", token);
+
+      navigate("/"); 
+    } catch (error) {
+      console.error(error);
+      alert("Invalid credentials");
     }
   };
-
   return (
     <div style={{ maxWidth: "400px", margin: "50px auto" }}>
       <h1>Login</h1>

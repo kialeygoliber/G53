@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from jose import jwt
+from jose import jwt, JWTError
 from dotenv import load_dotenv
 import os
 from passlib.context import CryptContext
@@ -32,11 +32,17 @@ def create_access_token(data: dict, expires_minutes: int = 60):
 
 def verify_token(credentials: HTTPAuthorizationCredentials = Depends(security)):
     token = credentials.credentials
-
-    if token != "temporary-token-for-testing-lollll":
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        username = payload.get("sub")
+        if username is None:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Invalid token"
+            )
+    except JWTError:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid or expired token"
         )
-
-    return token
+    return username

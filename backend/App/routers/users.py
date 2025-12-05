@@ -19,20 +19,19 @@ def get_db():
 def register(user: UserCreate, db: Session = Depends(get_db)):
     db_user = db.query(User).filter(User.username == user.username).first()
     if db_user:
-        raise HTTPException(status_code=400, detail="This username is already in use")
-    hashed_pw = bcrypt.hash(user.password)
-    db_user = User(email=user.username, password=hashed_pw)
+        raise HTTPException(status_code=400, detail="Username already exists")
+    db_user = User(username=user.username, password=user.password)
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
     token = create_access_token({"sub": db_user.username})
-    return {"access_token" : token, "token_type": "bearer"}
+    return {"access_token": token, "token_type": "bearer"}
 
 
 @router.post("/login", response_model=Token)
 def login(user: UserCreate, db: Session = Depends(get_db)):
     db_user = db.query(User).filter(User.username == user.username).first()
-    if not db_user or not verify_password(user.password, db_user.password):
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials")
+    if not db_user or db_user.password != user.password:
+        raise HTTPException(status_code=401, detail="Invalid credentials")
     token = create_access_token({"sub": db_user.username})
     return {"access_token": token, "token_type": "bearer"}

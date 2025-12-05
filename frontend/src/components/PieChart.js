@@ -8,7 +8,7 @@ export default function PieChart({ width = 400 }) {
 
 
   useEffect(() => {
-    const token = localStorage.getItem("token"); // get the JWT
+    const token = localStorage.getItem("token"); 
 
     axios.get("http://localhost:3000/pie_data", {
       headers: {
@@ -16,7 +16,7 @@ export default function PieChart({ width = 400 }) {
       }
     })
     .then(response => {
-      setData(response.data); // store chart data
+      setData(response.data); 
     })
     .catch(error => {
       console.error(error);
