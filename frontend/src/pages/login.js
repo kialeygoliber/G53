@@ -8,10 +8,9 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // For now, just store a dummy token in localStorage
     if (username && password) {
-      localStorage.setItem("token", "dummy-token");
-      navigate("/"); // redirect to dashboard
+      localStorage.setItem("token", "temporary-token-for-testing-lollll");
+      navigate("/");
     } else {
       alert("Please enter username and password");
     }
