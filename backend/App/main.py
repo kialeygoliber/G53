@@ -10,8 +10,8 @@ origins = [
     "http://127.0.0.1", 
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "http://localhost:3001"
-    "157.245.233.160"
+    "http://localhost:3001",
+    "http://157.245.233.160"
 ]
 
 @app.get("/")
