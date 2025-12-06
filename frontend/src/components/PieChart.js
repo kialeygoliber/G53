@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 import axios from "axios";
+import { API_URL } from "../config";
 
 export default function PieChart({ width = 400 }) {
   const ref = useRef();
@@ -10,11 +11,10 @@ export default function PieChart({ width = 400 }) {
   useEffect(() => {
     const token = localStorage.getItem("token"); 
 
-    axios.get("http://localhost:3000/pie_data", {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
+    axios.get(`${API_URL}/pie_data`, {
+      headers: { Authorization: `Bearer ${token}` }
     })
+    
     .then(response => {
       setData(response.data); 
     })

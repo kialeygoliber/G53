@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PieChart from "../components/PieChart";
 import axios from "axios";
+import { API_URL } from "../config";
 
 export default function Summary() {
   const handleLogout = () => {
@@ -13,7 +14,7 @@ export default function Summary() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    axios.get("http://localhost:3000/pie_data", { headers: { Authorization: `Bearer ${token}` } })
+    axios.get(`${API_URL}/pie_data`, { headers: { Authorization: `Bearer ${token}` } })
       .then(res => setData(res.data))
       .catch(err => console.error(err));
   }, []);
