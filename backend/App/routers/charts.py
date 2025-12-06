@@ -20,6 +20,7 @@ def get_pie_data(token: str = Depends(verify_token)):
         {"name": "Wearables", "value": 20},
         {"name": "Surgical Robotics", "value": 50}
     ]
+    print(data)
     return JSONResponse(content=data)
 
 @router.get("/bar_data")
