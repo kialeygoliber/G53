@@ -6,7 +6,8 @@ from ..schemas import UserCreate, Token
 from ..auth import create_access_token, get_password_hash, verify_password
 from passlib.hash import bcrypt # type: ignore
 
-router = APIRouter(prefix="/users", tags=["Users"])
+router = APIRouter(tags=["Users"])
+
 
 def get_db():
     db = SessionLocal()

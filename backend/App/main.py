@@ -25,6 +25,7 @@ app.add_middleware(
     allow_headers=["*"])
 app.include_router(users.router)
 app.include_router(charts.router)
+app.include_router(users.router, prefix="/api")
 #app.include_router(tasks.router)
 
 #@app.get("/pie_data")
