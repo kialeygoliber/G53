@@ -17,7 +17,8 @@ def get_pie_data(token: str = Depends(verify_token)):
     data = [
         {"name": "Telemedicine", "value": 50},
         {"name": "AI Diagnostics", "value": 30},
-        {"name": "Wearables", "value": 20}
+        {"name": "Wearables", "value": 20},
+        {"name": "Surgical Robotics", "value": 50}
     ]
     return JSONResponse(content=data)
 
